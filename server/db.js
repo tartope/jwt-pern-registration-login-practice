@@ -1,0 +1,13 @@
+//uses pg library to configure server connection to database.
+const Pool = require('pg').Pool;
+
+//instance the pool
+const pool = new Pool({
+    user: 'artope',
+    host: 'localhost',
+    port: 5432,
+    database: 'jwttutorial'
+});
+
+//exports the instance
+module.exports = pool;

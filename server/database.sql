@@ -3,7 +3,7 @@
 CREATE DATABASE jwttutorial;
 
 --create table schema
--- remember to set extension (download) for 'uuid_generate_v4()' to function
+-- remember to set extension (download) for 'uuid_generate_v4()' to function: run command -> 'create extension if not exists "uuid-ossp";' inside database.
 CREATE TABLE users(
     -- 'uuid' creates a complex id; 'uuid_generate_v4()' is a function that runs to create the uuid
     user_id uuid PRIMARY KEY DEFAULT uuid_generate_v4(),
@@ -12,3 +12,6 @@ CREATE TABLE users(
     user_email VARCHAR(255) NOT NULL,
     user_password VARCHAR(255) NOT NULL
 );
+
+--insert fake users
+INSERT INTO users (user_name, user_email, user_password) VALUES ('tunisia', 'tartope@gmail.com', '123');

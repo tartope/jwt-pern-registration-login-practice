@@ -13,5 +13,5 @@ CREATE TABLE users(
     user_password VARCHAR(255) NOT NULL
 );
 
---insert fake users
+--insert fake users (use single quotes to add data (unable to do so with double quotes).
 INSERT INTO users (user_name, user_email, user_password) VALUES ('tunisia', 'tartope@gmail.com', '123');

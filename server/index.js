@@ -15,6 +15,9 @@ app.use(express.json());  //req.body object: gets data from the client. gives ac
 //activates routes
 app.use('/auth', require('./routes/jwtAuth'))
 
+//dashboard route
+app.use('/dashboard', require('./routes/dashboard'));
+
 //gets the server to start
 //'nodemon index' command detects changes in the file and restarts server
 app.listen(3000, () => {

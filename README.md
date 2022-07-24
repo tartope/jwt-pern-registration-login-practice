@@ -31,3 +31,6 @@
 21. Build 'register' route in 'jwtAuth.js' file
 ### Create JWT Generator
 22. 
+## Educational source
+
+[freeCodeCamp.org](https://www.youtube.com/watch?v=7UQBMb8ZpuE)

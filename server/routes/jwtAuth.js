@@ -10,7 +10,7 @@ const validInfo = require('../middleware/validInfo');
 const authorization = require('../middleware/authorization');
 
 
-//registering
+//registering:
 //'post' to add data (add someone new in db)
 router.post('/register', validInfo, async (req, res) => {
     try {
@@ -48,17 +48,18 @@ router.post('/register', validInfo, async (req, res) => {
     }
 });
 
-//login route
+//login route:
+//'post' to add data (add someone new in db)
 router.post('/login', validInfo, async (req, res) => {
     try {
         //1. destructure req.body
         const {email, password} = req.body;
 
-        //2. check if user doesn't exist
+        //2. check if user doesn't exist (if user does not exist throw an error)
         const user = await pool.query('SELECT * FROM users WHERE user_email = $1', [email]);
         
         if(user.rows.length === 0){
-            return res.status(401).json('Email doesn not exist!');
+            return res.status(401).json('Email does not exist!');
         }
 
         //3. check if incoming password matches db password
@@ -68,7 +69,6 @@ router.post('/login', validInfo, async (req, res) => {
             return res.status(401).json('Password or email is incorrect.')
         }
         
-
         //4. give jwt token
         const token = jwtGenerator(user.rows[0].user_id);
         res.json({ token })

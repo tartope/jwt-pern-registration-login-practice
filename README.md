@@ -30,7 +30,18 @@
 20. In 'index.js' file, specify routes 
 21. Build 'register' route in 'jwtAuth.js' file
 ### Create JWT Generator
-22. 
+22. In 'server', run npm i dotenv
+23. In 'server', create create '.env' file and create secret key
+24. In 'server', create 'utils' folder that will create all functions
+25. In 'utils' folder, create 'jwtGenerator.js' file 
+26. In 'jwtGenerator.js' file, require jsonwebtoken, and require 'dotenv'
+27. Create 'jwtGenerator' function
+28. In "jwtAuth.js', require 'jwtGenerator' function
+29. Add 'jwtGenerator' to 'register' route in 'jwtAuth.js' file
+### Build Login Route
+30. Buld 'login' route in 'jwtAuth.js' file
+### Create JWT middleware
+31. 
 ## Educational source
 
 [freeCodeCamp.org](https://www.youtube.com/watch?v=7UQBMb8ZpuE)

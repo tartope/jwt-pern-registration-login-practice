@@ -1,4 +1,4 @@
-//to make routes more modular, use routers b/c it allows you to break down routes and combine them all together inside the 'index.js' file.
+//to make routes more modular, use 'router' b/c it allows you to break down routes and combine them all together inside the 'index.js' file.
 const router = require('express').Router();
 //requires pool from db.js file: can run queries with pg
 const pool = require("../db");
@@ -25,9 +25,9 @@ router.post('/register', validInfo, async (req, res) => {
             return res.status(401).send('User already exists');
         }
 
-        //if user does exists, use steps 3, 4 and 5
+        //if user does exists, use steps 3, 4 and 5:
         //3. Bcrypt the user password
-        //how encrypted it will be
+        //'saltRound' is how encrypted the password will be
         const saltRound = 10;
         const salt = await bcrypt.genSalt(saltRound);
         //this gives an encrypted password

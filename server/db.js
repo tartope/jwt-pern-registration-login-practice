@@ -1,7 +1,7 @@
 //uses pg library to configure server connection to database.
 const Pool = require('pg').Pool;
 
-//instance the pool
+//instance the pool: how and where to connect to database
 const pool = new Pool({
     user: 'artope',
     host: 'localhost',

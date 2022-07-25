@@ -1,4 +1,5 @@
 import React, { Fragment, useState } from "react";
+import { Link } from 'react-router-dom';
 
 
 const Register = ({ setAuth })=>{
@@ -27,9 +28,9 @@ const Register = ({ setAuth })=>{
                 body: JSON.stringify(body)
             });
 
-            const parsRes = await response.json();
+            const parseRes = await response.json();
 
-            localStorage.setItem('token', parsRes.token);
+            localStorage.setItem('token', parseRes.token);
             
             setAuth(true);
         } catch (err) {
@@ -71,6 +72,7 @@ const Register = ({ setAuth })=>{
                 </input>
                 <button className="btn btn-success">Submit</button> 
             </form>
+            <Link to='/login'>Login</Link>
         </Fragment>
     );
 };

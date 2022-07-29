@@ -41,7 +41,15 @@
 ### Build Login Route
 30. Buld 'login' route in 'jwtAuth.js' file
 ### Create JWT middleware
-31. 
+31. Create new folder, 'middleware'
+32. In 'middleware', create 'authorization.js' file
+33. In 'middleware', create 'validinfo.js' file (checks if email is valid or not)
+34. In 'jwtAuth.js', take in middleware; require 'validinfo.js' file (add to register and login routes)
+### Build Private Routes
+35. In 'jwtAuth.js' file, build 'is-verify' route; require 'authorization.js' file (add to 'is-verify' route)
+36. In 'routes' folder, create 'dashboard.js' file
+37. In 'index.js' file, create dashboard route
+38. In 'dashboard.js' file, build dashboard function
 ## Educational source
 
 [freeCodeCamp.org](https://www.youtube.com/watch?v=7UQBMb8ZpuE)

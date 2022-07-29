@@ -1,5 +1,8 @@
+//Require router
 const router = require('express').Router();
+//Require pool
 const pool = require('../db');
+//Require authorization middleware
 const authorization = require('../middleware/authorization');
 
 router.get('/', authorization, async (req, res) =>{

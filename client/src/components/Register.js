@@ -1,18 +1,21 @@
 import React, { Fragment, useState } from "react";
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 
 const Register = ({ setAuth })=>{
 
+    //Collects state from all the inputs in the form
     const [inputs, setInputs] = useState({ 
         email: "",
         password: "",
         name: ""
     })
 
-    const {email, password, name} = inputs;
+    const { email, password, name } = inputs;
 
     const onChange = (e)=>{
+        //Grabs all inputs and targets form 'name' and sets it to form 'value'
         setInputs({...inputs, [e.target.name] : e.target.value})
     }
 
@@ -28,11 +31,24 @@ const Register = ({ setAuth })=>{
                 body: JSON.stringify(body)
             });
 
+            //Parse/convert the json data so it can be used
             const parseRes = await response.json();
 
-            localStorage.setItem('token', parseRes.token);
-            
-            setAuth(true);
+            if(parseRes.token){
+
+                //Saves token to local storage (sets value of token to parseRes)
+                localStorage.setItem('token', parseRes.token);
+                
+                //Toggles 'setAuth' according to routes in 'App.js'
+                setAuth(true);
+                //If true, this notification will appear
+                toast.success('Registered successfully!');
+            }else{
+                setAuth(false);
+                //If false, error message from server will appear
+                toast.error(parseRes);
+            }
+
         } catch (err) {
             console.error(err.message)
         }

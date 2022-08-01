@@ -1,5 +1,6 @@
 import React, { Fragment, useState } from "react";
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 
 const Login = ({setAuth})=>{
@@ -28,11 +29,25 @@ const Login = ({setAuth})=>{
                 body: JSON.stringify(body)
             });
 
+            //Parse/convert the json data so it can be used
             const parseRes = await response.json()
 
-            localStorage.setItem('token', parseRes.token);
+            //If statement to use react-toastify
+            if(parseRes.token){
 
-            setAuth(true);
+                //Saves token to local storage (sets value of token to parseRes)
+                localStorage.setItem('token', parseRes.token);
+
+                //Toggles 'setAuth' according to routes in 'App.js'
+                setAuth(true);
+                //If true, this notification will appear
+                toast.success('Login successful!');
+            }else{
+                setAuth(false);
+                //If false, error message from server will appear
+                toast.error(parseRes);
+            }
+
         }  catch (err){
             console.error(err.message)
         }
